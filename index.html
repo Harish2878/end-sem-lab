@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Signup Page</title>
+    <style>
+        body {
+            font-family: Arial;
+            background-color: lightblue;
+            text-align: center;
+        }
+
+        .form {
+            background-color: white;
+            width: 300px;
+            margin: 100px auto;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        input {
+            padding: 10px;
+            margin: 8px;
+            width: 85%;
+        }
+
+        button {
+            background-color: blue;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form">
+        <h2>Signup Form</h2>
+
+        <form onsubmit="register(event)">
+            <input type="text" id="name" placeholder="Enter Name" required><br>
+            <input type="email" id="email" placeholder="Enter Email" required><br>
+            <input type="password" id="password" placeholder="Enter Password" required><br>
+            <button type="submit">Signup</button>
+        </form>
+
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function register(event) {
+            event.preventDefault();
+
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+
+            // Store user details in the browser
+            var user = {
+                name: name,
+                email: email,
+                password: password
+            };
+
+            localStorage.setItem("userDetails", JSON.stringify(user));
+
+            document.getElementById("result").innerHTML =
+                "Registration Successful!";
+
+            alert("Signup Successful!");
+            document.querySelector("form").reset();
+        }
+    </script>
+</body>
+</html>
